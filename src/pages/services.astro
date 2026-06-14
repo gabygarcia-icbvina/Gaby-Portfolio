@@ -1,0 +1,290 @@
+---
+// src/pages/services.astro
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: 'fa-solid fa-globe',
+    title: 'Landing Page',
+    description: 'Página de presentación rápida y profesional para tu negocio o emprendimiento. Diseño moderno, responsive y optimizado.',
+    price: '$60.000 – $100.000',
+    time: '3–5 días',
+    includes: ['Diseño personalizado', 'Responsive (móvil + desktop)', 'Formulario de contacto', 'Dominio + hosting incluido el primer mes'],
+  },
+  {
+    icon: 'fa-solid fa-laptop-code',
+    title: 'Sitio Web Completo',
+    description: 'Sitio con múltiples páginas para negocios que necesitan más estructura: inicio, servicios, galería, contacto y más.',
+    price: '$120.000 – $200.000',
+    time: '1–2 semanas',
+    includes: ['Todo lo del plan Landing', 'Hasta 5 páginas', 'SEO básico', 'Google Analytics'],
+  },
+  {
+    icon: 'fa-solid fa-store',
+    title: 'Tienda Online',
+    description: 'Configuración y diseño de tienda en Tiendanube para que puedas vender tus productos online desde el día uno.',
+    price: '$80.000 – $130.000',
+    time: '3–5 días',
+    includes: ['Configuración de Tiendanube', 'Carga de productos', 'Integración de pagos (Webpay / transferencia)', 'Capacitación para administrarla'],
+  },
+  {
+    icon: 'fa-solid fa-layer-group',
+    title: 'App Web',
+    description: 'Aplicación web a medida con base de datos, autenticación de usuarios y panel de administración.',
+    price: '$150.000 – $250.000',
+    time: '2–3 semanas',
+    includes: ['Diseño UI personalizado', 'Base de datos (Supabase)', 'Login / registro de usuarios', 'Panel de administración'],
+  },
+  {
+    icon: 'fa-solid fa-robot',
+    title: 'Automatización',
+    description: 'Scripts y bots en Python para automatizar tareas repetitivas: reportes, scraping, notificaciones, integraciones.',
+    price: '$50.000 – $100.000',
+    time: '3–7 días',
+    includes: ['Análisis del proceso a automatizar', 'Script en Python', 'Documentación de uso', 'Soporte post-entrega'],
+  },
+  {
+    icon: 'fa-solid fa-wrench',
+    title: 'Mantenimiento Mensual',
+    description: 'Mantén tu sitio actualizado, seguro y funcionando. Ideal si ya tienes un sitio pero necesitas apoyo continuo.',
+    price: '$20.000 – $40.000 / mes',
+    time: 'Ongoing',
+    includes: ['Actualizaciones de contenido', 'Corrección de errores', 'Respaldo mensual', 'Soporte por WhatsApp'],
+  },
+];
+
+const WHATSAPP = '+56971280513';
+const EMAIL    = 'gabygarciah.pro@gmail.com';
+---
+
+<Layout name="Services">
+
+  <header class="fixed w-full h-16 bg-[#00112e] top-0 z-20 text-white flex items-center justify-between px-6">
+    <a href="/" class="firacode text-sm opacity-50 hover:opacity-100 transition">
+      ← gabygarciah-pro.vercel.app
+    </a>
+    <nav class="flex gap-6 text-2xl">
+      <a href="/" title="Portfolio" class="hover:scale-110 transition-all">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href={`mailto:${EMAIL}`} title="Email" class="hover:scale-110 transition-all">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href={`https://wa.me/${WHATSAPP}`} target="_blank" title="WhatsApp" class="hover:scale-110 transition-all">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="hero text-white text-center px-6">
+      <p class="firacode text-white/40 text-sm mb-4 tracking-widest uppercase">Freelance Services</p>
+      <h1 class="firacode text-5xl font-bold mb-4">¿Necesitas un sitio<br/>o una app?</h1>
+      <p class="text-white/60 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+        Soy Gaby García, desarrolladora de software estudiante de ICBViña.
+        Diseño y construyo sitios web y aplicaciones para emprendedores y negocios locales
+        en Viña del Mar y Villa Alemana.
+      </p>
+      <a
+        href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Gaby, vi tu página y me interesa cotizar un proyecto 👋')}`}
+        target="_blank"
+        class="cta-btn"
+      >
+        <i class="fa-brands fa-whatsapp"></i> Cotiza por WhatsApp
+      </a>
+    </section>
+
+    <!-- ── SERVICES GRID ── -->
+    <section class="section">
+      <h2 class="section-title text-white">Servicios</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(s => (
+          <article class="service-card">
+            <div class="service-icon">
+              <i class={s.icon}></i>
+            </div>
+            <h3 class="firacode text-white text-lg font-semibold mb-2">{s.title}</h3>
+            <p class="text-white/55 text-sm leading-relaxed mb-4">{s.description}</p>
+
+            <ul class="includes-list mb-5">
+              {s.includes.map(item => (
+                <li>
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-auto border-t border-white/8 pt-4 flex justify-between items-end">
+              <div>
+                <p class="firacode text-white font-semibold text-sm">{s.price} CLP</p>
+                <p class="firacode text-white/35 text-xs">{s.time}</p>
+              </div>
+              <a
+                href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola Gaby, me interesa el servicio de ${s.title} 👋`)}`}
+                target="_blank"
+                class="quote-btn"
+              >
+                Cotizar
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="section text-center text-white">
+      <h2 class="firacode text-3xl font-bold mb-4">¿No encuentras lo que buscas?</h2>
+      <p class="text-white/50 mb-8 max-w-md mx-auto">
+        Escríbeme y conversamos. Cada proyecto es distinto y puedo adaptarme a lo que necesitas.
+      </p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a
+          href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Gaby, tengo un proyecto y quiero conversar 👋')}`}
+          target="_blank"
+          class="cta-btn"
+        >
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href={`mailto:${EMAIL}`} class="cta-btn-outline">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-white/20 firacode text-xs py-8">
+    © {new Date().getFullYear()} Gaby García · <a href="/" class="hover:text-white/50 transition">Ver portafolio</a>
+  </footer>
+
+</Layout>
+
+<style>
+  main { background: #00112e; }
+
+  /* Hero */
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 96px;
+    padding-bottom: 64px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 40px; height: 2px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+  }
+
+  /* Buttons */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: #25D366;
+    color: white;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: scale(1.03); }
+
+  .cta-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .cta-btn-outline:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+  /* Service cards */
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .service-card:hover {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .includes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .includes-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .quote-btn {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .quote-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+</style>
