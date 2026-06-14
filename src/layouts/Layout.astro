@@ -1,14 +1,21 @@
+---
+import '../styles/global.css';
+const { name } = Astro.props
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Gaby Portfolio | {name}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/6eb494880c.js" crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body class="timeline-view overflow-x-hidden">
 		<slot />
 	</body>
 </html>
@@ -19,5 +26,12 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #00173e ;
 	}
+	.firacode {
+		font-family: "Fira Code", monospace;
+		font-optical-sizing: auto;
+		font-weight: 10px;
+		font-style: normal;
+}
 </style>
